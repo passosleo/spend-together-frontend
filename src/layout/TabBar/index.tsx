@@ -16,7 +16,7 @@ type TabBarProps = {
 export function TabBar({ options }: TabBarProps) {
   const pathname = usePathname();
   return (
-    <div className="absolute bottom-0 left-0 w-full h-14 shadow-sm border-t py-2 px-8 flex items-center justify-between bg-secondary-foreground rounded-t-2xl text-primary-foreground z-50">
+    <div className="fixed bottom-0 left-0 w-full h-14 shadow-sm border-t py-2 px-8 flex items-center justify-between bg-secondary-foreground rounded-t-2xl text-primary-foreground z-50">
       {options.map((option, index) => {
         const isActive = option.href === pathname;
         return option.href ? (

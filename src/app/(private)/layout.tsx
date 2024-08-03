@@ -31,7 +31,7 @@ export default function PrivateLayout({
   return (
     <div>
       <Header user={user} />
-      <div className="pt-14 bg-primary-foreground h-svh">{children}</div>
+      <div className="pt-14 bg-primary-foreground h-screen">{children}</div>
       <TabBar
         options={[
           {

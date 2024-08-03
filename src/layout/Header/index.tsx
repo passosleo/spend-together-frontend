@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Header({ user }: { user: User }) {
   return (
-    <div className="absolute w-full h-14 shadow-sm border-b py-2 px-3 flex items-center justify-between bg-background z-50">
+    <div className="fixed w-full h-14 shadow-sm border-b py-2 px-3 flex items-center justify-between bg-background z-50">
       <CustomAvatar
         name={user.name}
         // image={{
