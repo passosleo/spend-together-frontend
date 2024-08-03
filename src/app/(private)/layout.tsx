@@ -4,7 +4,13 @@ import { useAuthContext } from "@/context/AuthContext";
 import { CustomLoading } from "../../components/CustomLoading";
 import { redirect, usePathname } from "next/navigation";
 import { Header } from "@/layout/Header";
-import { Footer } from "@/layout/Footer";
+import { TabBar } from "@/layout/TabBar";
+import {
+  ArchiveIcon,
+  EllipsisIcon,
+  HomeIcon,
+  LayoutListIcon,
+} from "lucide-react";
 
 export default function PrivateLayout({
   children,
@@ -26,7 +32,30 @@ export default function PrivateLayout({
     <div>
       <Header user={user} />
       <div className="pt-14 bg-primary-foreground h-svh">{children}</div>
-      <Footer user={user} />
+      <TabBar
+        options={[
+          {
+            name: "Home",
+            icon: <HomeIcon className="h-5 w-5" />,
+            href: "/home",
+          },
+          {
+            name: "Controles",
+            icon: <LayoutListIcon className="h-5 w-5" />,
+            href: "/spend-control",
+          },
+          {
+            name: "Arquivados",
+            icon: <ArchiveIcon className="h-5 w-5" />,
+            href: "/spend-control/archived",
+          },
+          {
+            name: "Mais",
+            icon: <EllipsisIcon className="h-5 w-5" />,
+            href: "/more",
+          },
+        ]}
+      />
     </div>
   );
 }
