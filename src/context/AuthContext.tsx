@@ -23,7 +23,7 @@ type AuthContextProps = {
   onAuthenticated: (token: string) => void;
   logout: () => void;
   isLoading: boolean;
-  user: User | null;
+  user: User;
 };
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
@@ -48,15 +48,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const isTokenValid = verifyTokenExpirationTime(decoded);
         if (isTokenValid) {
           if (user === null) {
-            setUser({
-              id: decoded.id,
-              email: decoded.email,
-              enabled: decoded.enabled,
-              name: decoded.name,
-              roles: decoded.roles,
-              createdAt: decoded.createdAt,
-              updatedAt: decoded.updatedAt,
-            });
+            setUser(buildUser(decoded));
           }
           return;
         }
@@ -83,15 +75,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const isTokenValid = verifyTokenExpirationTime(decoded);
         if (isTokenValid) {
           if (user === null) {
-            setUser({
-              id: decoded.id,
-              email: decoded.email,
-              enabled: decoded.enabled,
-              name: decoded.name,
-              roles: decoded.roles,
-              createdAt: decoded.createdAt,
-              updatedAt: decoded.updatedAt,
-            });
+            setUser(buildUser(decoded));
             setCookie("token", token, getTokenExpirationDate(decoded.exp));
             if (redirectTo) redirect(redirectTo);
             return;
@@ -107,6 +91,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [clearUser, redirectTo, setCookie, setUser, user]
   );
 
+  function buildUser(decoded: JwtDecode<User>) {
+    return {
+      userId: decoded.userId,
+      username: decoded.username,
+      name: decoded.name,
+      email: decoded.email,
+      emailVerified: decoded.emailVerified,
+      receiveEmails: decoded.receiveEmails,
+      avatar: decoded.avatar,
+      isPublic: decoded.isPublic,
+      isEnabled: decoded.isEnabled,
+      createdAt: decoded.createdAt,
+      updatedAt: decoded.updatedAt,
+    };
+  }
+
   const logout = useCallback(() => {
     invalidateCookie("token");
     clearUser();
@@ -120,7 +120,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         onAuthenticated,
         logout,
         isLoading,
-        user,
+        user: user!,
       }}
     >
       {children}

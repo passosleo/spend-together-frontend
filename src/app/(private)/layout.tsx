@@ -3,6 +3,8 @@
 import { useAuthContext } from "@/context/AuthContext";
 import { CustomLoading } from "../../components/CustomLoading";
 import { redirect, usePathname } from "next/navigation";
+import { Header } from "@/layout/Header";
+import { Footer } from "@/layout/Footer";
 
 export default function PrivateLayout({
   children,
@@ -10,7 +12,7 @@ export default function PrivateLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const { isAuthenticated, isLoading } = useAuthContext();
+  const { isAuthenticated, isLoading, user } = useAuthContext();
 
   if (isLoading) {
     return <CustomLoading isLoading fullScreen />;
@@ -21,8 +23,10 @@ export default function PrivateLayout({
   }
 
   return (
-    <div className="flex items-center justify-center h-screen w-full">
-      {children}
+    <div>
+      <Header user={user} />
+      <div className="pt-14 bg-primary-foreground h-svh">{children}</div>
+      <Footer user={user} />
     </div>
   );
 }

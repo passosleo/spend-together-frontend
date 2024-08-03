@@ -1,9 +1,13 @@
 export type User = {
-  id: string;
-  name: string;
+  userId: string;
+  username: string;
+  name: string | null;
   email: string;
-  enabled: boolean;
-  roles: string[];
-  createdAt: string;
-  updatedAt: string;
+  emailVerified: boolean;
+  receiveEmails: boolean;
+  avatar: string | null;
+  isPublic: boolean;
+  isEnabled: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 };

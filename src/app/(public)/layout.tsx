@@ -24,7 +24,7 @@ export default function PublicLayout({
     if (redirectTo) {
       return redirect(redirectTo);
     } else {
-      return redirect("/dashboard");
+      return redirect("/home");
     }
   }
 
