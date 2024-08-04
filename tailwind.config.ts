@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { sizes } from "./src/theme";
 
 const config = {
   darkMode: ["class"],
@@ -18,7 +19,13 @@ const config = {
       },
     },
     extend: {
+      fontSize: {
+        ...sizes,
+        "2xs": "0.625rem",
+        "3xs": "0.5rem",
+      },
       maxWidth: {
+        ...sizes,
         "8xl": "90rem",
         "9xl": "100rem",
         "10xl": "110rem",

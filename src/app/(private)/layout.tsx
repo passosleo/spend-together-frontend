@@ -29,29 +29,31 @@ export default function PrivateLayout({
   }
 
   return (
-    <div>
+    <div className="flex flex-col h-full">
       <Header user={user} />
-      <div className="pt-14 bg-primary-foreground h-screen">{children}</div>
+      <div className="flex-grow overflow-auto bg-primary-foreground mt-14 mb-14">
+        {children}
+      </div>
       <TabBar
         options={[
           {
             name: "Home",
-            icon: <HomeIcon className="h-5 w-5" />,
+            icon: <HomeIcon size={22} />,
             href: "/home",
           },
           {
             name: "Controles",
-            icon: <LayoutListIcon className="h-5 w-5" />,
+            icon: <LayoutListIcon size={22} />,
             href: "/spend-control",
           },
           {
             name: "Arquivados",
-            icon: <ArchiveIcon className="h-5 w-5" />,
+            icon: <ArchiveIcon size={22} />,
             href: "/spend-control/archived",
           },
           {
             name: "Mais",
-            icon: <EllipsisIcon className="h-5 w-5" />,
+            icon: <EllipsisIcon size={22} />,
             href: "/more",
           },
         ]}
