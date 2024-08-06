@@ -6,6 +6,7 @@ import { signInSchema } from "@/schemas/sign-in";
 import { LockIcon, MailIcon } from "lucide-react";
 import { useSignIn } from "./hooks/useSignIn";
 import { CustomCheckbox } from "@/components/CustomCheckbox";
+import Link from "next/link";
 
 export default function SignInPage() {
   const { onSubmit, storedEmail, storedRememberMe, isLoading } = useSignIn();
@@ -46,6 +47,12 @@ export default function SignInPage() {
           Entrar
         </CustomButton>
       </CustomForm>
+      <p className="mt-5 text-sm">
+        Não possui conta?{" "}
+        <Link href="/sign-up" className="font-semibold underline">
+          Cadastre-se
+        </Link>
+      </p>
     </div>
   );
 }

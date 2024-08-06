@@ -11,6 +11,11 @@ export const messages = {
     },
     password: {
       min: (min: number) => `A senha deve ter no mínimo ${min} caracteres`,
+      uppercase: "A senha deve conter ao menos uma letra maiúscula",
+      lowercase: "A senha deve conter ao menos uma letra minúscula",
+      number: "A senha deve conter ao menos um dígito numérico",
+      special: "A senha deve conter ao menos um caractere especial",
+      equal: "As senhas devem ser iguais",
     },
     date: {
       isNotValid: "Selecione uma data valida",
@@ -18,6 +23,8 @@ export const messages = {
     string: {
       isNotEqual: "Os campos não são iguais",
       isEmpty: "O campo está vazio",
+      min: (min: number) => `O campo deve ter no mínimo ${min} caracteres`,
+      max: (max: number) => `O campo deve ter no máximo ${max} caracteres`,
     },
   },
 };

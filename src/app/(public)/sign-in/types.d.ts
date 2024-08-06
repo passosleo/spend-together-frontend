@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 export type SignInRequest = {
   email: string;
   password: string;

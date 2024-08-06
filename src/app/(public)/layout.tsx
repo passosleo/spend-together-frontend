@@ -30,7 +30,7 @@ export default function PublicLayout({
 
   return (
     <div className="flex justify-center max-w-max-screen mx-auto border-r">
-      <ThemeToggle className="absolute top-5 right-5" />
+      {/* <ThemeToggle className="absolute top-5 right-5" /> */}
       <When condition={!isMobile}>
         <div className="flex w-full items-center justify-center bg-black">
           <h1 className="text-white">Spend Together</h1>

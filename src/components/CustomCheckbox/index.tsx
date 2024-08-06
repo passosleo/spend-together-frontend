@@ -6,7 +6,7 @@ import { Checkbox } from "../ui/checkbox";
 import { iterateObject } from "@/utils/object";
 import { When } from "../When";
 
-type Props = {
+type Props = React.ComponentProps<"div"> & {
   label: React.ReactNode;
   name: string;
   error?: string;
@@ -46,7 +46,7 @@ export function CustomCheckbox({
             name={id}
             disabled={disabled}
             render={({ field: { onChange, value, ...fields } }) => (
-              <div>
+              <div {...props}>
                 <div className="flex flex-row items-center gap-1">
                   <Checkbox
                     id={id}
@@ -57,7 +57,7 @@ export function CustomCheckbox({
                   />
                   <label
                     htmlFor={id}
-                    className={`text-sm select-none ${
+                    className={`text-sm select-none leading-tight ${
                       disabled ? "cursor-not-allowed" : "cursor-pointer"
                     }`}
                   >
