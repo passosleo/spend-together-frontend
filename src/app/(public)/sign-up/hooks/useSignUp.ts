@@ -1,6 +1,6 @@
 import { SignUpSchema } from "@/schemas/sign-up";
 import { useSignUpService } from "./useSignUpService";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/auth-context";
 
 export function useSignUp() {
   const service = useSignUpService();

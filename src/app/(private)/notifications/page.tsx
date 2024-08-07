@@ -1,8 +1,8 @@
 "use client";
-import { CustomList } from "@/components/CustomList";
-import { NotificationItem } from "@/components/NotificationItem";
+import { CustomList } from "@/components/custom-list";
 import { useNotification } from "./hooks/useNotification";
-import { CustomLoading } from "@/components/CustomLoading";
+import { CustomLoading } from "@/components/custom-loading";
+import { NotificationCard } from "./components/notification-card";
 
 export default function NotificationsPage() {
   const { notifications, isLoading } = useNotification();
@@ -11,7 +11,7 @@ export default function NotificationsPage() {
       <CustomLoading isLoading={isLoading}>
         <CustomList
           data={notifications}
-          renderItem={(notification) => <NotificationItem {...notification} />}
+          renderItem={(notification) => <NotificationCard {...notification} />}
         />
       </CustomLoading>
     </div>

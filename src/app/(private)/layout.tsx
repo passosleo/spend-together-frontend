@@ -1,10 +1,10 @@
 "use client";
 
-import { useAuthContext } from "@/context/AuthContext";
-import { CustomLoading } from "../../components/CustomLoading";
+import { useAuthContext } from "@/context/auth-context";
+import { CustomLoading } from "../../components/custom-loading";
 import { redirect, usePathname } from "next/navigation";
-import { Header } from "@/layout/Header";
-import { TabBar } from "@/layout/TabBar";
+import { Header } from "@/layout/header";
+import { TabBar } from "@/layout/tab-bar";
 import {
   ArchiveIcon,
   EllipsisIcon,
@@ -31,7 +31,10 @@ export default function PrivateLayout({
   return (
     <div className="flex flex-col h-full">
       <Header user={user} />
-      <div className="flex-grow overflow-auto bg-primary-foreground mt-14 mb-14">
+      <div
+        className="overflow-auto bg-primary-foreground pt-14"
+        style={{ height: "calc(100vh - 56px)" }}
+      >
         {children}
       </div>
       <TabBar

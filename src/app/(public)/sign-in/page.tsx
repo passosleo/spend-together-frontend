@@ -1,11 +1,11 @@
 "use client";
-import { CustomButton } from "@/components/CustomButton";
-import { CustomForm } from "@/components/CustomForm";
-import { CustomInput } from "@/components/CustomInput";
+import { CustomButton } from "@/components/custom-button";
+import { CustomForm } from "@/components/custom-form";
+import { CustomInput } from "@/components/custom-input";
 import { signInSchema } from "@/schemas/sign-in";
 import { LockIcon, MailIcon } from "lucide-react";
 import { useSignIn } from "./hooks/useSignIn";
-import { CustomCheckbox } from "@/components/CustomCheckbox";
+import { CustomCheckbox } from "@/components/custom-checkbox";
 import Link from "next/link";
 
 export default function SignInPage() {

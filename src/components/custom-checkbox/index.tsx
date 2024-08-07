@@ -1,10 +1,10 @@
 import React from "react";
-import { ConnectForm } from "../ConnectForm";
+import { ConnectForm } from "../connect-form";
 import { ErrorHookForm, ErrorsHookForm } from "@/types/react-hook-form";
 import { Controller, RegisterOptions } from "react-hook-form";
 import { Checkbox } from "../ui/checkbox";
 import { iterateObject } from "@/utils/object";
-import { When } from "../When";
+import { When } from "../when";
 
 type Props = React.ComponentProps<"div"> & {
   label: React.ReactNode;

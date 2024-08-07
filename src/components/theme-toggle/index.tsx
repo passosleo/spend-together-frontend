@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CheckIcon, MoonIcon, SunIcon } from "lucide-react";
-import { When } from "../When";
+import { When } from "../when";
 
 export type ThemeToggleProps = {
   className?: string;

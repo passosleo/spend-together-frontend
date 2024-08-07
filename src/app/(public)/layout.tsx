@@ -1,11 +1,11 @@
 "use client";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/auth-context";
 import { redirect } from "next/navigation";
-import { CustomLoading } from "../../components/CustomLoading";
+import { CustomLoading } from "../../components/custom-loading";
 import { useRedirectTo } from "@/hooks/useRedirectTo";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useBreakpoints } from "@/hooks/useBreakpoints";
-import { When } from "@/components/When";
+import { When } from "@/components/when";
 
 export default function PublicLayout({
   children,

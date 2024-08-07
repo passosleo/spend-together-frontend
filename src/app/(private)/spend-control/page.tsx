@@ -1,8 +1,8 @@
 "use client";
-import { CustomLoading } from "@/components/CustomLoading";
+import { CustomLoading } from "@/components/custom-loading";
 import { useSpendControl } from "./hooks/useSpendControl";
-import { CustomList } from "@/components/CustomList";
-import { SpendControlItem } from "@/components/SpendControlItem";
+import { CustomList } from "@/components/custom-list";
+import { SpendControlCard } from "./components/spend-control-card";
 
 export default function SpendControlsPage() {
   const { spendControls, isLoading } = useSpendControl();
@@ -11,7 +11,7 @@ export default function SpendControlsPage() {
       <CustomLoading isLoading={isLoading}>
         <CustomList
           data={spendControls}
-          renderItem={(spendControl) => <SpendControlItem {...spendControl} />}
+          renderItem={(spendControl) => <SpendControlCard {...spendControl} />}
         />
       </CustomLoading>
     </div>

@@ -1,9 +1,9 @@
 "use client";
-import { CustomButton } from "@/components/CustomButton";
-import { CustomForm } from "@/components/CustomForm";
-import { CustomInput } from "@/components/CustomInput";
+import { CustomButton } from "@/components/custom-button";
+import { CustomForm } from "@/components/custom-form";
+import { CustomInput } from "@/components/custom-input";
 import { AtSign, LockIcon, MailIcon, UserIcon } from "lucide-react";
-import { CustomCheckbox } from "@/components/CustomCheckbox";
+import { CustomCheckbox } from "@/components/custom-checkbox";
 import { signUpSchema } from "@/schemas/sign-up";
 import Link from "next/link";
 import { useSignUp } from "./hooks/useSignUp";

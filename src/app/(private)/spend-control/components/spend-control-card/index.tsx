@@ -1,11 +1,11 @@
 import { SpendControl } from "@/app/(private)/spend-control/types";
 import { formatCurrency } from "@/utils/currency";
-import { When } from "../When";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { UserIcon, UsersIcon } from "lucide-react";
+import { When } from "@/components/when";
 
-export function SpendControlItem(spendControl: SpendControl) {
+export function SpendControlCard(spendControl: SpendControl) {
   return (
     <Link href={`/spend-control/${spendControl.spendControlId}`} passHref>
       <div className="flex items-center bg-background px-4 py-2 text-slate-700 text-sm border-b active:bg-primary-foreground transition-all min-h-20">

@@ -1,7 +1,7 @@
 import { SignInSchema } from "@/schemas/sign-in";
 import { useSignInService } from "./useSignInService";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/auth-context";
 
 export function useSignIn() {
   const loginService = useSignInService();

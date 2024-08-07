@@ -1,6 +1,6 @@
 "use client";
-import { CustomButton } from "@/components/CustomButton";
-import { useAuthContext } from "@/context/AuthContext";
+import { CustomButton } from "@/components/custom-button";
+import { useAuthContext } from "@/context/auth-context";
 
 export default function DashboardPage() {
   const { user, logout } = useAuthContext();

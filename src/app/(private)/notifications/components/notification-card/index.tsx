@@ -1,6 +1,6 @@
 import { Notification } from "@/app/(private)/notifications/types";
+import { When } from "@/components/when";
 import { formatDate } from "@/utils/date";
-import { When } from "../When";
 import Link from "next/link";
 
 function NotificationContent(notification: Notification) {
@@ -24,7 +24,7 @@ function NotificationContent(notification: Notification) {
   );
 }
 
-export function NotificationItem(notification: Notification) {
+export function NotificationCard(notification: Notification) {
   return notification.link ? (
     <Link href={notification.link} passHref>
       <NotificationContent {...notification} />

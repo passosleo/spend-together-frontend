@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { ConnectForm } from "../ConnectForm";
+import { ConnectForm } from "../connect-form";
 import { useCustomInput } from "./hooks/useCustomInput";
 
 import { Controller, RegisterOptions } from "react-hook-form";
@@ -8,7 +8,7 @@ import { twMerge } from "tailwind-merge";
 import { Input, InputProps as UIInputProps } from "../ui/input";
 import { iterateObject } from "@/utils/object";
 import { ErrorHookForm, ErrorsHookForm } from "@/types/react-hook-form";
-import { When } from "../When";
+import { When } from "../when";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 export type InputProps = UIInputProps & {

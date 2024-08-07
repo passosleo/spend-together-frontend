@@ -1,5 +1,5 @@
-import { CustomAvatar } from "@/components/CustomAvatar";
-import { When } from "@/components/When";
+import { CustomAvatar } from "@/components/custom-avatar";
+import { When } from "@/components/when";
 import { User } from "@/types/generic";
 import { BellIcon, ChevronLeftIcon } from "lucide-react";
 import Link from "next/link";
