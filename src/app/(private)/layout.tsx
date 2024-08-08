@@ -11,6 +11,8 @@ import {
   HomeIcon,
   LayoutListIcon,
 } from "lucide-react";
+import { VerifyEmail } from "@/components/verify-email";
+import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
 
 export default function PrivateLayout({
   children,
@@ -19,6 +21,7 @@ export default function PrivateLayout({
 }) {
   const pathname = usePathname();
   const { isAuthenticated, isLoading, user } = useAuthContext();
+  const verifyEmailDrawer = useVerifyEmailDrawer();
 
   if (isLoading) {
     return <CustomLoading isLoading fullScreen />;
@@ -26,6 +29,10 @@ export default function PrivateLayout({
 
   if (!isAuthenticated) {
     return redirect(`/sign-in?redirectTo=${pathname}`);
+  }
+
+  function onEmailUnverified() {
+    if (!user?.emailVerified) verifyEmailDrawer.open();
   }
 
   return (
@@ -43,23 +50,32 @@ export default function PrivateLayout({
             name: "Home",
             icon: <HomeIcon size={22} />,
             href: "/home",
+            onClick: () => onEmailUnverified(),
           },
           {
             name: "Controles",
             icon: <LayoutListIcon size={22} />,
             href: "/spend-control",
+            onClick: () => onEmailUnverified(),
           },
           {
             name: "Arquivados",
             icon: <ArchiveIcon size={22} />,
             href: "/spend-control/archived",
+            onClick: () => onEmailUnverified(),
           },
           {
             name: "Mais",
             icon: <EllipsisIcon size={22} />,
             href: "/more",
+            onClick: () => onEmailUnverified(),
           },
         ]}
+      />
+      <VerifyEmail
+        user={user}
+        isOpen={verifyEmailDrawer.isOpen}
+        onClose={verifyEmailDrawer.close}
       />
     </div>
   );

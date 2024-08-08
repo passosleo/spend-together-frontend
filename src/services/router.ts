@@ -15,7 +15,7 @@ const routes = {
   },
   sendVerifyEmail: {
     method: "POST",
-    uri: "/api/v1/sign-up",
+    uri: "/api/v1/sign-up/verify-email/send",
   },
   getPrivacyPolicy: {
     method: "GET",

@@ -15,15 +15,16 @@ import {
   verifyTokenExpirationTime,
 } from "@/utils/jwt";
 import { User } from "@/types/generic";
-import { useUserStore } from "@/stores/user";
+import { UserStore, useUserStore } from "@/stores/user";
 import { useRedirectTo } from "@/hooks/useRedirectTo";
+import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
 
 type AuthContextProps = {
   isAuthenticated: boolean;
-  onAuthenticated: (token: string) => void;
+  onAuthenticated: (token: string, isFirstAccess?: boolean) => void;
   logout: () => void;
   isLoading: boolean;
-  user: User;
+  user: UserStore;
 };
 
 const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
@@ -33,6 +34,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const { user, setUser } = useUserStore();
   const redirectTo = useRedirectTo();
+  const verifyEmailDrawer = useVerifyEmailDrawer();
 
   const clearUser = useCallback(() => {
     if (user !== null) {
@@ -48,7 +50,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const isTokenValid = verifyTokenExpirationTime(decoded);
         if (isTokenValid) {
           if (user === null) {
-            setUser(buildUser(decoded));
+            const buildedUser = buildUser(decoded);
+            setUser({
+              ...buildedUser,
+              isFirstAccess: false,
+            });
+            if (!buildedUser.emailVerified) verifyEmailDrawer.open();
           }
           return;
         }
@@ -62,22 +69,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       clearUser();
       setIsLoading(false);
     }
-  }, [clearUser, getCookie, setUser, user]);
+  }, [clearUser, getCookie, setUser, user, verifyEmailDrawer]);
 
   useEffect(() => {
     verifyToken();
   }, [verifyToken]);
 
   const onAuthenticated = useCallback(
-    (token: string) => {
+    (token: string, isFirstAccess = false) => {
       try {
         const decoded = jwtDecode<JwtDecode<User>>(token);
         const isTokenValid = verifyTokenExpirationTime(decoded);
         if (isTokenValid) {
           if (user === null) {
-            setUser(buildUser(decoded));
+            const buildedUser = buildUser(decoded);
+            setUser({
+              ...buildedUser,
+              isFirstAccess,
+            });
             setCookie("token", token, getTokenExpirationDate(decoded.exp));
             if (redirectTo) redirect(redirectTo);
+            if (!buildedUser.emailVerified) verifyEmailDrawer.open();
             return;
           }
         }
@@ -88,7 +100,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setIsLoading(false);
       }
     },
-    [clearUser, redirectTo, setCookie, setUser, user]
+    [clearUser, redirectTo, setCookie, setUser, user, verifyEmailDrawer]
   );
 
   function buildUser(decoded: JwtDecode<User>) {

@@ -14,7 +14,7 @@ export function useSignUp() {
       {
         onSuccess: (res) => {
           const token = res.data!.session.token;
-          onAuthenticated(token);
+          onAuthenticated(token, true);
         },
       }
     );
