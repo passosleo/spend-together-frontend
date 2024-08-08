@@ -3,7 +3,6 @@
 import { useAuthContext } from "@/context/auth-context";
 import { CustomLoading } from "../../components/custom-loading";
 import { redirect, usePathname } from "next/navigation";
-import { Header } from "@/layout/header";
 import { TabBar } from "@/layout/tab-bar";
 import {
   ArchiveIcon,
@@ -13,6 +12,7 @@ import {
 } from "lucide-react";
 import { VerifyEmail } from "@/components/verify-email";
 import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
+import { Header } from "@/layout/header";
 
 export default function PrivateLayout({
   children,

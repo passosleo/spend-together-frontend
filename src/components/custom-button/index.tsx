@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { Button, ButtonProps } from "../ui/button";
-import { When } from "../when";
 import { LoaderCircle } from "lucide-react";
+import { When } from "../when";
 
 type CustomButtonProps = ButtonProps & {
   rightIcon?: React.ReactNode;

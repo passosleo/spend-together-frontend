@@ -3,8 +3,8 @@ import { formatCurrency } from "@/utils/currency";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { UserIcon, UsersIcon } from "lucide-react";
-import { When } from "@/components/when";
 import { CustomListItem } from "@/components/custom-list-item";
+import { When } from "@/components/when";
 
 export function SpendControlItem(spendControl: SpendControl) {
   return (
