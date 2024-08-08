@@ -1,11 +1,12 @@
 import { Notification } from "@/app/(private)/notifications/types";
+import { CustomListItem } from "@/components/custom-list-item";
 import { When } from "@/components/when";
 import { formatDate } from "@/utils/date";
 import Link from "next/link";
 
 function NotificationContent(notification: Notification) {
   return (
-    <div className="flex flex-col bg-background px-4 pt-1 pb-2 text-slate-700 text-sm border-b active:bg-primary-foreground transition-all">
+    <CustomListItem className="pt-1 pb-2">
       <div className="flex items-center justify-between">
         <When condition={!notification.isRead}>
           <span className="text-2xs px-0.5 leading-normal bg-red-500 text-white rounded-sm">
@@ -20,11 +21,11 @@ function NotificationContent(notification: Notification) {
         </span>
       </div>
       <p>{notification.content}</p>
-    </div>
+    </CustomListItem>
   );
 }
 
-export function NotificationCard(notification: Notification) {
+export function NotificationItem(notification: Notification) {
   return notification.link ? (
     <Link href={notification.link} passHref>
       <NotificationContent {...notification} />

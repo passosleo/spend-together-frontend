@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export function Header({ user }: { user: User }) {
-  const pagesWithBackButton = ["/notifications"];
+  const pagesWithBackButton = ["/notifications", "/more"];
   const pathname = usePathname();
   const router = useRouter();
   const showBackButton = pagesWithBackButton.includes(pathname);

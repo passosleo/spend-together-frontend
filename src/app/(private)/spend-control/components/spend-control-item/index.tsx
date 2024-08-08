@@ -4,11 +4,12 @@ import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { UserIcon, UsersIcon } from "lucide-react";
 import { When } from "@/components/when";
+import { CustomListItem } from "@/components/custom-list-item";
 
-export function SpendControlCard(spendControl: SpendControl) {
+export function SpendControlItem(spendControl: SpendControl) {
   return (
     <Link href={`/spend-control/${spendControl.spendControlId}`} passHref>
-      <div className="flex items-center bg-background px-4 py-2 text-slate-700 text-sm border-b active:bg-primary-foreground transition-all min-h-20">
+      <CustomListItem className="flex-row items-center py-2 min-h-20">
         <span
           className="w-2 h-10 mr-4"
           style={{ backgroundColor: spendControl.color, borderRadius: 4 }}
@@ -33,7 +34,7 @@ export function SpendControlCard(spendControl: SpendControl) {
         >
           <UsersIcon className="ml-auto " size={18} />
         </When>
-      </div>
+      </CustomListItem>
     </Link>
   );
 }

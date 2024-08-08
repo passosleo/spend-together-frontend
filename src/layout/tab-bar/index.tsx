@@ -2,15 +2,10 @@ import React from "react";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { usePathname } from "next/navigation";
+import { MenuOption } from "@/types/generic";
 
 type TabBarProps = {
-  options: {
-    name: string;
-    icon: React.ReactNode;
-    href?: string;
-    onClick?: () => void;
-    className?: string;
-  }[];
+  options: MenuOption[];
 };
 
 export function TabBar({ options }: TabBarProps) {

@@ -22,11 +22,11 @@ export function CustomAvatar({
       .join("");
   return (
     <Avatar
-      className={twMerge("cursor-pointer select-none", className)}
+      className={twMerge("cursor-pointer select-none text-primary", className)}
       {...props}
     >
       {image && <AvatarImage {...image} />}
-      <AvatarFallback className="font-medium">
+      <AvatarFallback className="font-medium select-none">
         {initials ?? fallback}
       </AvatarFallback>
     </Avatar>

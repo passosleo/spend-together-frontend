@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 type CustomListProps<T> = {
   data: T[];
   renderItem: (item: T, index: number) => React.ReactNode;

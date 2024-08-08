@@ -11,3 +11,11 @@ export type User = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type MenuOption = {
+  name: string;
+  icon: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
+  className?: string;
+};

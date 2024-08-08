@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useCookies } from "@/hooks/useCookies";
 import { jwtDecode } from "jwt-decode";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import {
   getTokenExpirationDate,
   JwtDecode,
