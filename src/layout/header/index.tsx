@@ -18,23 +18,15 @@ export function Header({ user }: { user: User }) {
       <When
         condition={!showBackButton}
         elseRender={
-          <Link href="/notifications">
-            <div
-              className="text-slate-800 p-2 rounded-full"
-              onClick={router.back}
-            >
-              <ChevronLeftIcon size={26} />
-            </div>
-          </Link>
+          <div
+            className="text-slate-800 p-2 rounded-full"
+            onClick={() => router.back()}
+          >
+            <ChevronLeftIcon size={26} />
+          </div>
         }
       >
-        <CustomAvatar
-          name={user.name}
-          // image={{
-          //   src: `https://ui-avatars.com/api/?background=random&name=${user.username}`,
-          // }}
-          className="h-9 w-9"
-        />
+        <CustomAvatar name={user.name} className="h-9 w-9" />
       </When>
       <Link href="/notifications">
         <div className="bg-secondary text-slate-800 p-2 rounded-full">
