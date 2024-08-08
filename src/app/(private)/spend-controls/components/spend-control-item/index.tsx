@@ -1,14 +1,14 @@
-import { SpendControl } from "@/app/(private)/spend-control/types";
 import { formatCurrency } from "@/utils/currency";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { UserIcon, UsersIcon } from "lucide-react";
 import { CustomListItem } from "@/components/custom-list-item";
 import { When } from "@/components/when";
+import { SpendControl } from "../../types";
 
 export function SpendControlItem(spendControl: SpendControl) {
   return (
-    <Link href={`/spend-control/${spendControl.spendControlId}`} passHref>
+    <Link href={`/spend-controls/${spendControl.spendControlId}`} passHref>
       <CustomListItem className="flex-row items-center py-2 min-h-20">
         <span
           className="w-2 h-10 mr-4"

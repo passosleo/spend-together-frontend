@@ -3,19 +3,23 @@ import { useMiddleware } from "../middleware/useMiddleware";
 import { DefaultResponse, Params, RouteName } from "../types";
 import { AxiosError } from "axios";
 
-export type CustomQueryProps<ReturnData> = {
-  onError?: (error: any, res?: DefaultResponse<ReturnData>) => void;
-  onSuccess?: (data: DefaultResponse<ReturnData>) => void;
-  queryOptions?: UseQueryOptions<DefaultResponse<ReturnData>>;
+export type CustomQueryProps<
+  ParamsType = Params,
+  QueryType = Params,
+  ResponseType = unknown
+> = {
+  onError?: (error: any, res?: DefaultResponse<ResponseType>) => void;
+  onSuccess?: (data: DefaultResponse<ResponseType>) => void;
+  queryOptions?: UseQueryOptions<DefaultResponse<ResponseType>>;
   notHandleError?: boolean;
   queryKey: QueryKey;
   routeName: RouteName;
   enabled?: boolean;
-  params?: Params;
-  query?: Params;
+  params?: ParamsType;
+  query?: QueryType;
 };
 
-export function useCustomQuery<ReturnData>({
+export function useCustomQuery<ParamsType, QueryType, ResponseType>({
   queryKey,
   enabled = true,
   notHandleError,
@@ -24,7 +28,7 @@ export function useCustomQuery<ReturnData>({
   params,
   query: queryParam,
   ...statusFunctions
-}: CustomQueryProps<ReturnData>) {
+}: CustomQueryProps<ParamsType, QueryType, ResponseType>) {
   const { requestAxios, handleAxiosError } = useMiddleware();
 
   function onError(error: AxiosError<any>) {
@@ -33,21 +37,21 @@ export function useCustomQuery<ReturnData>({
       statusFunctions.onError(error, error.response?.data);
   }
 
-  function onSuccess(data: DefaultResponse<ReturnData>) {
+  function onSuccess(data: DefaultResponse<ResponseType>) {
     if (statusFunctions.onSuccess) statusFunctions.onSuccess(data);
   }
 
   async function handleQuery() {
-    return requestAxios({
+    return requestAxios<void, ParamsType, QueryType, ResponseType>({
       routeName,
       params,
       query: queryParam,
     })
       .then((res) => {
-        onSuccess(res.data as DefaultResponse<ReturnData>);
+        onSuccess(res.data as DefaultResponse<ResponseType>);
         return res.data;
       })
-      .catch(onError) as Promise<DefaultResponse<ReturnData>>;
+      .catch(onError) as Promise<DefaultResponse<ResponseType>>;
   }
 
   return useQuery({

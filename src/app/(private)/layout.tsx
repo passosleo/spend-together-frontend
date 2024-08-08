@@ -55,13 +55,13 @@ export default function PrivateLayout({
           {
             name: "Controles",
             icon: <LayoutListIcon size={22} />,
-            href: "/spend-control",
+            href: "/spend-controls",
             onClick: () => onEmailUnverified(),
           },
           {
             name: "Arquivados",
             icon: <ArchiveIcon size={22} />,
-            href: "/spend-control/archived",
+            href: "/spend-controls/archived",
             onClick: () => onEmailUnverified(),
           },
           {

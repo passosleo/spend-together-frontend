@@ -5,13 +5,17 @@ import { useCookies } from "@/hooks/useCookies";
 import { mountUrl } from "@/utils/url";
 import { config } from "@/config";
 
-export type RequestAxiosProps<PayloadType> = {
+export type RequestAxiosProps<
+  PayloadType = unknown,
+  ParamsType = Params,
+  QueryType = Params
+> = {
   config?: AxiosRequestConfig;
   routeName: RouteName;
   payload?: PayloadType;
   withAuth?: boolean;
-  params?: Params;
-  query?: Params;
+  params?: ParamsType;
+  query?: QueryType;
 };
 
 export function useMiddleware() {
@@ -24,13 +28,18 @@ export function useMiddleware() {
     }
   }
 
-  async function requestAxios<ResponseType, PayloadType>({
+  async function requestAxios<
+    PayloadType = unknown,
+    ParamsType = Params,
+    QueryType = Params,
+    ResponseType = unknown
+  >({
     config = {},
     routeName,
     payload,
     params,
     query,
-  }: RequestAxiosProps<PayloadType>) {
+  }: RequestAxiosProps<PayloadType, ParamsType, QueryType>) {
     const { method, uri, listenHeaders } = routes[routeName] as {
       listenHeaders?: string[];
       method: string;
@@ -79,6 +88,7 @@ export function useMiddleware() {
         ? responseError
         : messageError;
 
+    //Handle UI error here
     // toast.error(descriptionError);
     alert(descriptionError);
 

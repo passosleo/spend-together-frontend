@@ -7,10 +7,12 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export function Header({ user }: { user: User }) {
-  const pagesWithBackButton = ["/notifications", "/more"];
+  const pagesWithBackButton = ["/notifications", "/more", "/spend-controls/*"];
   const pathname = usePathname();
   const router = useRouter();
-  const showBackButton = pagesWithBackButton.includes(pathname);
+  const showBackButton = pagesWithBackButton.some((page) =>
+    new RegExp(page.replace("*", ".*")).test(pathname)
+  );
   return (
     <div className="fixed w-full h-14 shadow-sm border-b py-2 px-3 flex items-center justify-between bg-background z-50">
       <When

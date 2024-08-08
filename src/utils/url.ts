@@ -9,11 +9,11 @@ export function replaceParams(url: string, params: Params) {
   return urlWithParams;
 }
 
-export function mountUrl(
+export function mountUrl<ParamsType = Params, QueryType = Params>(
   url: string,
   baseUrl: string,
-  params?: Params,
-  query?: Params
+  params?: ParamsType,
+  query?: QueryType
 ) {
   const urlApi = baseUrl;
   const urlWithParams = params ? replaceParams(url, params) : url;

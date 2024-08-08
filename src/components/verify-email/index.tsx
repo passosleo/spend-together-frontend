@@ -26,6 +26,7 @@ export function VerifyEmail({ user, isOpen, onClose }: VerifyEmailProps) {
             : "Ops! Parece que você ainda não validou seu e-mail. Por favor, valide sua conta para continuar."
         }
         open={isOpen}
+        dismissible={false}
         content={
           <ResendCountdown
             isEnabled={isFirstAccess}

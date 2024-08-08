@@ -14,6 +14,7 @@ import React from "react";
 type CustomDrawerProps = Omit<DialogProps, "children"> & {
   title?: string;
   description?: string;
+  dismissible?: boolean;
   content?: React.ReactNode;
   footer?: React.ReactNode;
   header?: React.ReactNode;
