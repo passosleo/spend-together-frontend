@@ -19,7 +19,7 @@ export function Header({ user }: { user: User }) {
         condition={!showBackButton}
         elseRender={
           <div
-            className="text-slate-800 p-2 rounded-full"
+            className="text-slate-800 p-2 rounded-full cursor-pointer active:bg-primary-foreground transition-all"
             onClick={() => router.back()}
           >
             <ChevronLeftIcon size={26} />
