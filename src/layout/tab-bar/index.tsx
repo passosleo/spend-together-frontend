@@ -13,7 +13,7 @@ export function TabBar({ options }: TabBarProps) {
   return (
     <div className="fixed bottom-0 left-0 w-full h-14 shadow-sm border-t py-2 px-8 flex items-center justify-between bg-secondary-foreground rounded-t-2xl text-primary-foreground z-50">
       {options.map((option, index) => {
-        const isActive = option.href === pathname;
+        const isActive = option.href ? pathname.includes(option.href) : false;
         return option.href ? (
           <Link
             href={option.href}

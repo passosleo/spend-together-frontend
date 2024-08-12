@@ -4,6 +4,6 @@ export function useSpendControl() {
   const service = useSpendControlService();
   return {
     spendControls: service.data?.data || [],
-    isLoading: service.isLoading,
+    isLoading: service.isLoading || service.isFetching,
   };
 }

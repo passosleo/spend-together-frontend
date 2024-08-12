@@ -6,8 +6,8 @@ export type Spend = {
   description: string | null;
   amount: number;
   isEnabled: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   spendCategory: {
     spendCategoryId: string;
     name: string;

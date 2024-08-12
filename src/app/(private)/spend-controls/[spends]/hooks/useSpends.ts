@@ -7,6 +7,6 @@ export function useSpends() {
 
   return {
     spends: service.data?.data || [],
-    isLoading: service.isLoading,
+    isLoading: service.isLoading || service.isFetching,
   };
 }

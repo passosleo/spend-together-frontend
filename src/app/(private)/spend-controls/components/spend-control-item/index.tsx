@@ -9,9 +9,9 @@ import { SpendControl } from "../../types";
 export function SpendControlItem(spendControl: SpendControl) {
   return (
     <Link href={`/spend-controls/${spendControl.spendControlId}`} passHref>
-      <CustomListItem className="flex-row items-center py-2 min-h-20">
+      <CustomListItem className="flex-row items-center">
         <span
-          className="w-2 h-10 mr-4"
+          className="w-2 h-10 mr-2"
           style={{ backgroundColor: spendControl.color, borderRadius: 4 }}
         />
         <div className="leading-normal">

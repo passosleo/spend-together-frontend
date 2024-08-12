@@ -1,13 +1,19 @@
 "use client";
+import { CustomLoading } from "@/components/custom-loading";
 import { useSpends } from "./hooks/useSpends";
+import { CustomList } from "@/components/custom-list";
+import { SpendItem } from "./components/spend-item";
 
 export default function SpendsPage() {
   const { spends, isLoading } = useSpends();
-  console.log("SpendsPage ~ spends", spends);
-
   return (
     <div>
-      <h1>Spends</h1>
+      <CustomLoading isLoading={isLoading}>
+        <CustomList
+          data={spends}
+          renderItem={(spend) => <SpendItem {...spend} />}
+        />
+      </CustomLoading>
     </div>
   );
 }
