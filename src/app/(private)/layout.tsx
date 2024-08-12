@@ -6,13 +6,16 @@ import { redirect, usePathname } from "next/navigation";
 import { TabBar } from "@/layout/tab-bar";
 import {
   ArchiveIcon,
+  CircleDollarSignIcon,
   EllipsisIcon,
+  HandCoinsIcon,
   HomeIcon,
   LayoutListIcon,
 } from "lucide-react";
 import { VerifyEmail } from "@/components/verify-email";
 import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
 import { Header } from "@/layout/header";
+import { AddButton } from "@/layout/add-button";
 
 export default function PrivateLayout({
   children,
@@ -68,6 +71,20 @@ export default function PrivateLayout({
             name: "Mais",
             icon: <EllipsisIcon size={22} />,
             href: "/more",
+            onClick: () => onEmailUnverified(),
+          },
+        ]}
+      />
+      <AddButton
+        options={[
+          {
+            name: "Incluir uma despesa",
+            icon: <CircleDollarSignIcon size={20} />,
+            onClick: () => onEmailUnverified(),
+          },
+          {
+            name: "Criar um novo controle",
+            icon: <HandCoinsIcon size={20} />,
             onClick: () => onEmailUnverified(),
           },
         ]}

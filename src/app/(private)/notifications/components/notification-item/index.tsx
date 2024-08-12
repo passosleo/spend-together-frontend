@@ -6,7 +6,7 @@ import Link from "next/link";
 
 function NotificationContent(notification: Notification) {
   return (
-    <CustomListItem>
+    <CustomListItem className="gap-0">
       <div className="flex items-center justify-between">
         <When condition={!notification.isRead}>
           <span className="text-2xs px-0.5 leading-normal bg-red-500 text-white rounded-sm">
