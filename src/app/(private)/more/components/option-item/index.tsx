@@ -6,7 +6,7 @@ import Link from "next/link";
 export function OptionItem(option: MenuOption) {
   return (
     <Link href={option.href ?? ""} onClick={option.onClick}>
-      <CustomListItem className="flex-row items-center gap-4 py-4">
+      <CustomListItem className="flex-row items-center min-h-14">
         {option.icon}
         <span>{option.name}</span>
         <ChevronRightIcon size={22} className="ml-auto" />
