@@ -12,12 +12,12 @@ import {
   HomeIcon,
   LayoutListIcon,
 } from "lucide-react";
-import { VerifyEmail } from "@/components/verify-email";
-import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
+import { useVerifyEmailDrawer } from "@/layout/verify-email-drawer/hooks/useVerifyEmailDrawer";
 import { Header } from "@/layout/header";
 import { AddButton } from "@/layout/add-button";
 import { useCustomDrawer } from "@/components/custom-drawer/hooks/useCustomDrawer";
 import { CreateSpendControlDrawer } from "@/layout/create-spend-control-drawer";
+import { VerifyEmailDrawer } from "@/layout/verify-email-drawer";
 
 export default function PrivateLayout({
   children,
@@ -79,6 +79,7 @@ export default function PrivateLayout({
         ]}
       />
       <AddButton
+        onClick={() => onEmailUnverified()}
         options={[
           {
             name: "Incluir uma despesa",
@@ -88,21 +89,20 @@ export default function PrivateLayout({
           {
             name: "Criar um novo controle",
             icon: <HandCoinsIcon size={20} />,
-            onClick: () => {
-              onEmailUnverified();
-              createSpendControlDrawer.open();
-            },
+            onClick: () => createSpendControlDrawer.open(),
           },
         ]}
       />
       <CreateSpendControlDrawer
-        isOpen={createSpendControlDrawer.isOpen}
+        open={createSpendControlDrawer.isOpen}
         onClose={createSpendControlDrawer.close}
+        onOpenChange={createSpendControlDrawer.handle}
       />
-      <VerifyEmail
+      <VerifyEmailDrawer
         user={user}
-        isOpen={verifyEmailDrawer.isOpen}
+        open={verifyEmailDrawer.isOpen}
         onClose={verifyEmailDrawer.close}
+        onOpenChange={verifyEmailDrawer.handle}
       />
     </div>
   );

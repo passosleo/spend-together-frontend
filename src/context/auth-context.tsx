@@ -17,7 +17,7 @@ import {
 import { User } from "@/types/generic";
 import { UserStore, useUserStore } from "@/stores/user";
 import { useRedirectTo } from "@/hooks/useRedirectTo";
-import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
+import { useVerifyEmailDrawer } from "@/layout/verify-email-drawer/hooks/useVerifyEmailDrawer";
 
 type AuthContextProps = {
   isAuthenticated: boolean;

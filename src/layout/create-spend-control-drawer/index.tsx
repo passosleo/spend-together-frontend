@@ -1,25 +1,27 @@
 import { CustomButton } from "@/components/custom-button";
 import { CustomCheckbox } from "@/components/custom-checkbox";
-import { CustomDrawer } from "@/components/custom-drawer";
+import { CustomDrawer, CustomDrawerProps } from "@/components/custom-drawer";
 import { CustomForm } from "@/components/custom-form";
 import { CustomInput } from "@/components/custom-input";
+import { createSpendControlSchema } from "@/schemas/create-spend-control";
 import { PencilLineIcon, TagsIcon } from "lucide-react";
 
-export function CreateSpendControlDrawer({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
+type CreateSpendControlDrawerProps = CustomDrawerProps & {
   onClose: () => void;
-}) {
+};
+
+export function CreateSpendControlDrawer({
+  onClose,
+  ...props
+}: CreateSpendControlDrawerProps) {
   return (
     <CustomDrawer
+      {...props}
       title="Novo controle de despesas"
-      open={isOpen}
-      dismissible={false}
+      dismissible
       content={
         <CustomForm
-          zodSchema={undefined}
+          zodSchema={createSpendControlSchema}
           onSubmit={(data) => console.log(data)}
           className="px-4 pb-4"
         >
@@ -27,7 +29,7 @@ export function CreateSpendControlDrawer({
             name="name"
             type="text"
             label="Nome"
-            placeholder="Dê um nome"
+            placeholder="Escolha um nome"
             disabled={false}
             leftElement={<TagsIcon size={18} />}
           />

@@ -26,5 +26,8 @@ export const messages = {
       min: (min: number) => `O campo deve ter no mínimo ${min} caracteres`,
       max: (max: number) => `O campo deve ter no máximo ${max} caracteres`,
     },
+    general: {
+      atLeastOneUserRequired: "Selecione ao menos um usuário",
+    },
   },
 };

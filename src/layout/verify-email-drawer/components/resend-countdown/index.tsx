@@ -1,7 +1,7 @@
+import { CustomLoader } from "@/components/custom-loader";
+import { DrawerDescription } from "@/components/ui/drawer";
+import { When } from "@/components/when";
 import { useEffect, useState } from "react";
-import { DrawerDescription } from "../../../ui/drawer";
-import { When } from "../../../when";
-import { CustomLoader } from "../../../custom-loader";
 
 type Props = {
   isSending: boolean;

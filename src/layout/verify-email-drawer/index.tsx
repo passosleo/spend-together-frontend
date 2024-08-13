@@ -1,17 +1,23 @@
-import { CustomButton } from "../custom-button";
-import { CustomDrawer } from "../custom-drawer";
-import { When } from "../when";
-import { useVerifyEmail } from "./hooks/useVerifyEmail";
+import { CustomButton } from "../../components/custom-button";
+import {
+  CustomDrawer,
+  CustomDrawerProps,
+} from "../../components/custom-drawer";
+import { When } from "../../components/when";
 import { ResendCountdown } from "./components/resend-countdown";
+import { useVerifyEmail } from "./hooks/useVerifyEmail";
 import { UserStore } from "@/stores/user";
 
-type VerifyEmailProps = {
+type VerifyEmailProps = CustomDrawerProps & {
   user: UserStore;
-  isOpen: boolean;
   onClose: () => void;
 };
 
-export function VerifyEmail({ user, isOpen, onClose }: VerifyEmailProps) {
+export function VerifyEmailDrawer({
+  user,
+  onClose,
+  ...props
+}: VerifyEmailProps) {
   const { sendVerifyEmail, isSending, isUserEmailVerified, isFirstAccess } =
     useVerifyEmail({
       user,
@@ -19,14 +25,13 @@ export function VerifyEmail({ user, isOpen, onClose }: VerifyEmailProps) {
   return (
     <When condition={!isUserEmailVerified}>
       <CustomDrawer
+        {...props}
         title="Valide seu e-mail"
         description={
           isFirstAccess
             ? "Acabamos de enviar um e-mail de confirmação para você validar sua conta."
             : "Ops! Parece que você ainda não validou seu e-mail. Por favor, valide sua conta para continuar."
         }
-        open={isOpen}
-        dismissible={false}
         content={
           <ResendCountdown
             isEnabled={isFirstAccess}

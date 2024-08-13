@@ -11,7 +11,7 @@ import { DialogProps } from "@radix-ui/react-dialog";
 import { When } from "../when";
 import React from "react";
 
-type CustomDrawerProps = Omit<DialogProps, "children"> & {
+export type CustomDrawerProps = Omit<DialogProps, "children"> & {
   title?: string;
   description?: string;
   dismissible?: boolean;
