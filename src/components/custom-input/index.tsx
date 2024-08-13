@@ -116,7 +116,7 @@ const CustomInput = React.forwardRef<HTMLInputElement, InputProps>(
                   <div className="h-4 select-none">
                     <When condition={!hideError && (hasError || error)}>
                       <p className="text-red-500 text-xs">
-                        {(hasError?.message || error) as string}
+                        {hasError?.message || error}
                       </p>
                     </When>
                   </div>

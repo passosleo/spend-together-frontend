@@ -1,5 +1,6 @@
 import { CustomButton } from "@/components/custom-button";
 import { CustomCheckbox } from "@/components/custom-checkbox";
+import { CustomColorPicker } from "@/components/custom-color-picker";
 import { CustomDrawer, CustomDrawerProps } from "@/components/custom-drawer";
 import { CustomForm } from "@/components/custom-form";
 import { CustomInput } from "@/components/custom-input";
@@ -40,6 +41,30 @@ export function CreateSpendControlDrawer({
             placeholder="Insira uma descrição"
             disabled={false}
             leftElement={<PencilLineIcon size={18} />}
+          />
+          <CustomColorPicker
+            colors={[
+              "#FE4A49",
+              "#009FB7",
+              "#FFD700",
+              "#FF69B4",
+              "#87CEFA",
+              "#20B2AA",
+              "#9370DB",
+              "#7B68EE",
+              "#FF6347",
+              "#FE4A44",
+              "#009FB4",
+              "#FFD704",
+              "#FF69B5",
+              "#87CEF4",
+              "#20B2A4",
+              "#9370D4",
+              "#7B68E4",
+              "#FF6344",
+            ]}
+            name="color"
+            label="Cor"
           />
           <CustomCheckbox
             name="shared"
