@@ -25,10 +25,12 @@ export function AddButton({ options }: AddButtonProps) {
                 return (
                   <CustomListItem
                     key={index}
+                    onClick={option.onClick}
                     className={twMerge(
                       "flex flex-row min-h-4 items-center",
                       isFirst ? "rounded-t-md" : "",
-                      isLast ? "rounded-b-md" : ""
+                      isLast ? "rounded-b-md" : "",
+                      option.className
                     )}
                   >
                     {option.icon}

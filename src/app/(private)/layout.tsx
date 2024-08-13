@@ -16,6 +16,8 @@ import { VerifyEmail } from "@/components/verify-email";
 import { useVerifyEmailDrawer } from "@/components/verify-email/hooks/useVerifyEmailDrawer";
 import { Header } from "@/layout/header";
 import { AddButton } from "@/layout/add-button";
+import { useCustomDrawer } from "@/components/custom-drawer/hooks/useCustomDrawer";
+import { CreateSpendControlDrawer } from "@/layout/create-spend-control-drawer";
 
 export default function PrivateLayout({
   children,
@@ -25,6 +27,7 @@ export default function PrivateLayout({
   const pathname = usePathname();
   const { isAuthenticated, isLoading, user } = useAuthContext();
   const verifyEmailDrawer = useVerifyEmailDrawer();
+  const createSpendControlDrawer = useCustomDrawer();
 
   if (isLoading) {
     return <CustomLoading isLoading fullScreen />;
@@ -85,9 +88,16 @@ export default function PrivateLayout({
           {
             name: "Criar um novo controle",
             icon: <HandCoinsIcon size={20} />,
-            onClick: () => onEmailUnverified(),
+            onClick: () => {
+              onEmailUnverified();
+              createSpendControlDrawer.open();
+            },
           },
         ]}
+      />
+      <CreateSpendControlDrawer
+        isOpen={createSpendControlDrawer.isOpen}
+        onClose={createSpendControlDrawer.close}
       />
       <VerifyEmail
         user={user}

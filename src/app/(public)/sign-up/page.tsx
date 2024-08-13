@@ -12,16 +12,7 @@ export default function SignUpPage() {
   const { onSubmit, isLoading } = useSignUp();
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full">
-      <CustomForm
-        zodSchema={signUpSchema}
-        // useFormProps={{
-        //   defaultValues: {
-        //     email: storedEmail || "",
-        //     rememberMe: storedRememberMe,
-        //   },
-        // }}
-        onSubmit={onSubmit}
-      >
+      <CustomForm zodSchema={signUpSchema} onSubmit={onSubmit}>
         <CustomInput
           name="username"
           type="text"
