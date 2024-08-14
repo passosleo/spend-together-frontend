@@ -13,7 +13,7 @@ export type CustomColorPickerProps = {
   error?: string;
   hideError?: boolean;
   rules?: RegisterOptions;
-  defaultValue?: boolean;
+  defaultValue?: string;
   id?: string;
 };
 
@@ -40,7 +40,9 @@ export function CustomColorPicker({
         );
         return (
           <Controller
-            defaultValue={defaultValue || colors[0]}
+            defaultValue={
+              defaultValue || colors.length > 0 ? colors[0] : undefined
+            }
             control={control}
             rules={rules}
             name={id}
