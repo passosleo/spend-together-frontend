@@ -1,14 +1,14 @@
 import { CustomDrawer, CustomDrawerProps } from "@/components/custom-drawer";
 import { CustomForm } from "@/components/custom-form";
 import { createSpendControlSchema } from "@/schemas/create-spend-control";
-import { FormContent } from "./components/form-content";
+import { CreateSpendControlForm } from "./components/create-spend-control-form";
 
 type CreateSpendControlDrawerProps = CustomDrawerProps & {
-  onClose: () => void;
+  onCancel: () => void;
 };
 
 export function CreateSpendControlDrawer({
-  onClose,
+  onCancel,
   ...props
 }: CreateSpendControlDrawerProps) {
   return (
@@ -20,9 +20,14 @@ export function CreateSpendControlDrawer({
         <CustomForm
           zodSchema={createSpendControlSchema}
           onSubmit={(data) => console.log(data)}
+          useFormProps={{
+            defaultValues: {
+              invitedUsers: [],
+            },
+          }}
           className="px-4 pb-4"
         >
-          <FormContent onClose={onClose} />
+          <CreateSpendControlForm onCancel={onCancel} />
         </CustomForm>
       }
     />

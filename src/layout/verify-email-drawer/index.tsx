@@ -10,12 +10,12 @@ import { UserStore } from "@/stores/user";
 
 type VerifyEmailProps = CustomDrawerProps & {
   user: UserStore;
-  onClose: () => void;
+  onConfirm: () => void;
 };
 
 export function VerifyEmailDrawer({
   user,
-  onClose,
+  onConfirm,
   ...props
 }: VerifyEmailProps) {
   const { sendVerifyEmail, isSending, isUserEmailVerified, isFirstAccess } =
@@ -40,7 +40,7 @@ export function VerifyEmailDrawer({
             time={30}
           />
         }
-        footer={<CustomButton onClick={onClose}>Já validei</CustomButton>}
+        footer={<CustomButton onClick={onConfirm}>Já validei</CustomButton>}
       />
     </When>
   );

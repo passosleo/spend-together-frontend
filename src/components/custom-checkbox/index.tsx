@@ -5,8 +5,9 @@ import { Controller, RegisterOptions } from "react-hook-form";
 import { Checkbox } from "../ui/checkbox";
 import { iterateObject } from "@/utils/object";
 import { When } from "../when";
+import { CheckboxProps } from "@radix-ui/react-checkbox";
 
-type Props = React.ComponentProps<"div"> & {
+type Props = CheckboxProps & {
   label: React.ReactNode;
   name: string;
   error?: string;
@@ -46,14 +47,18 @@ export function CustomCheckbox({
             name={id}
             disabled={disabled}
             render={({ field: { onChange, value, ...fields } }) => (
-              <div {...props}>
+              <div>
                 <div className="flex flex-row items-center gap-1">
                   <Checkbox
+                    {...fields}
+                    {...props}
                     id={id}
-                    onCheckedChange={onChange}
+                    onCheckedChange={(value) => {
+                      onChange(value);
+                      props.onCheckedChange?.(value);
+                    }}
                     checked={value}
                     disabled={disabled}
-                    {...fields}
                   />
                   <label
                     htmlFor={id}

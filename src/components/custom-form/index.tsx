@@ -13,7 +13,7 @@ type Props<T extends FieldValues> = {
   onSubmit: (data: T, hookFormMethods: UseFormReturn<T>) => void;
   useFormProps?: Omit<UseFormProps<Partial<T>>, "resolver">;
   children: React.ReactNode;
-  zodSchema?: ZodSchema<Partial<T>>;
+  zodSchema?: ZodSchema<T>;
   resetOnSubmit?: boolean;
   className?: string;
   preventEnterSubmit?: boolean;

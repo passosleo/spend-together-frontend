@@ -95,13 +95,13 @@ export default function PrivateLayout({
       />
       <CreateSpendControlDrawer
         open={createSpendControlDrawer.isOpen}
-        onClose={createSpendControlDrawer.close}
+        onCancel={createSpendControlDrawer.close}
         onOpenChange={createSpendControlDrawer.handle}
       />
       <VerifyEmailDrawer
         user={user}
         open={verifyEmailDrawer.isOpen}
-        onClose={verifyEmailDrawer.close}
+        onConfirm={verifyEmailDrawer.close}
         onOpenChange={verifyEmailDrawer.handle}
       />
     </div>
