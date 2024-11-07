@@ -35,7 +35,7 @@ export default function MorePage() {
           {
             name: "Convites",
             icon: <UserPlusIcon size={22} />,
-            href: "/spend-controls/invites",
+            href: "/invites",
           },
           {
             name: "Notificações",

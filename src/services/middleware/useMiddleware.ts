@@ -4,6 +4,7 @@ import { HOST, routes } from "../router";
 import { useCookies } from "@/hooks/useCookies";
 import { mountUrl } from "@/utils/url";
 import { config } from "@/config";
+import { redirect } from "next/navigation";
 
 export type RequestAxiosProps<
   PayloadType = unknown,
@@ -19,9 +20,9 @@ export type RequestAxiosProps<
 };
 
 export function useMiddleware() {
+  const { getCookie, invalidateCookie } = useCookies();
+
   function setAxiosAuthorization(request: AxiosInstance) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { getCookie } = useCookies();
     const token = getCookie("token");
     if (token) {
       request.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -92,7 +93,16 @@ export function useMiddleware() {
     // toast.error(descriptionError);
     alert(descriptionError);
 
+    if (error.response?.status === 401) {
+      handleUnauthorized();
+    }
+
     return { descriptionError };
+  }
+
+  function handleUnauthorized() {
+    invalidateCookie("token");
+    redirect("/sign-in");
   }
 
   return { requestAxios, handleAxiosError, setAxiosAuthorization };

@@ -3,12 +3,14 @@ import { CustomCheckbox } from "@/components/custom-checkbox";
 import { CustomColorPicker } from "@/components/custom-color-picker";
 import { CustomInput } from "@/components/custom-input";
 import { CreateSpendControlSchema } from "@/schemas/create-spend-control";
-import { FeatherIcon, PencilLineIcon, TagsIcon } from "lucide-react";
+import { PencilLineIcon, PlusIcon, TagsIcon } from "lucide-react";
 import { useFormContext } from "react-hook-form";
 import { useSearchUserService } from "../../hooks/useSearchUsersService";
 import { UserSearchResponse } from "../../types";
 import { When } from "@/components/when";
 import { CustomSearchInput } from "@/components/custom-search-input";
+import { CustomAvatar } from "@/components/custom-avatar";
+import { twMerge } from "tailwind-merge";
 
 export function CreateSpendControlForm({ onCancel }: { onCancel: () => void }) {
   const form = useFormContext<CreateSpendControlSchema>();
@@ -97,17 +99,58 @@ export function CreateSpendControlForm({ onCancel }: { onCancel: () => void }) {
           <p className="text-sm font-semibold">
             Convidados {invitedUsers.length > 0 ? invitedUsers.length : ""}
           </p>
-          <CustomSearchInput />
         </div>
+        <CustomSearchInput
+          name="search"
+          placeholder="Buscar usuário"
+          searchResults={searchResultsFiltered}
+          isLoading={service.isLoading}
+          renderResults={(user, index) => {
+            const isLast = index === searchResultsFiltered.length - 1;
+            return (
+              <div
+                className={twMerge(
+                  "flex items-center justify-between border-b border-input p-2",
+                  isLast && "border-none"
+                )}
+                onClick={() => onAddUser(user)}
+              >
+                <div className="flex items-center gap-3">
+                  <CustomAvatar name={user.username} className="w-8 h-8" />
+                  <p className="text-sm text-primary">{user.username}</p>
+                </div>
+                <PlusIcon size={18} />
+              </div>
+            );
+          }}
+        />
         <When
           condition={invitedUsers.length}
           elseRender={
-            <p className="text-sm text-gray-500 text-center my-5">
+            <p className="text-sm text-gray-500 text-center mt-4 mb-8">
               Nenhum convidado
             </p>
           }
         >
-          <></>
+          <div className="mb-4">
+            {invitedUsers.map((user: UserSearchResponse) => (
+              <div
+                key={user.username}
+                className="flex items-center justify-between p-2"
+              >
+                <div className="flex items-center gap-3">
+                  <CustomAvatar name={user.username} className="w-8 h-8" />
+                  <p className="text-sm text-primary">{user.username}</p>
+                </div>
+                <div
+                  className="flex items-center gap-3 cursor-pointer"
+                  onClick={() => onRemoveUser(user.username)}
+                >
+                  <p className="text-sm text-red-500">Remover</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </When>
       </When>
 

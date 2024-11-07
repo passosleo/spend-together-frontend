@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import React from "react";
 import { Controller, RegisterOptions } from "react-hook-form";
 import { ConnectForm } from "../connect-form";
 import { iterateObject } from "@/utils/object";
@@ -64,7 +63,7 @@ export function CustomColorPicker({
                         minHeight: "1.3rem",
                       }}
                       className={clsx(
-                        "flex justify-center items-center rounded-full border",
+                        "flex justify-center items-center rounded-full border cursor-pointer",
                         field.value === color
                           ? `border-primary`
                           : `border-transparent`
