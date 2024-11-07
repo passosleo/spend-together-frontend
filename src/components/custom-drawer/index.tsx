@@ -43,7 +43,7 @@ export function CustomDrawer({
           </DrawerHeader>
         </When>
         <When condition={content}>
-          <div className="w-full flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-center justify-center overflow-y-auto">
             {content}
           </div>
         </When>
